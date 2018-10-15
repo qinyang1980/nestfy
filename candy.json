@@ -1,0 +1,33 @@
+{
+  "app": {
+    "port": 3000,
+    "setUpMsg": "Candy server is listening on port 3000",
+    "cors": {
+      "enable": true
+    },
+    "bodyParser": {
+      "enable": true,
+      "limit": "10mb"
+    },
+    "validation": {
+      "enable": true
+    },
+    "logRequest": {
+      "enable": true
+    },
+    "auth": {
+      "enable": false,
+      "headerTag": "x-access-token",
+      "secret": "i6r5LgMJdoa5trlM",
+      "expiresIn": "24h",
+      "decodedTag": "user"
+    }
+  },
+  "swagger": {
+    "enable": true,
+    "title": "candy-starter",
+    "description": "The photo API description",
+    "version": "1.0",
+    "path": "/doc"
+  }
+}

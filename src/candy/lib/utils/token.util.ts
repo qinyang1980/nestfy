@@ -1,0 +1,50 @@
+import * as jwt from 'jsonwebtoken';
+import config from '../config';
+import { BadRequestError } from '../http-errors/bad-request.error';
+
+export interface IVerifyTokenResult {
+  /**
+   * token 校验是否成功
+   */
+  success: boolean;
+  /**
+   * 解码后的token对象
+   */
+  decodedToken?: any;
+  /**
+   * 校验失败的错误
+   */
+  error?: any;
+}
+
+/**
+ * @author andy.qin
+ * 产生token，验证token
+ */
+export class TokenUtil {
+  public static genToken(payload: any): string {
+    const plainObj = Object.assign({}, payload);
+    const token = jwt.sign(plainObj, config.app.auth.secret, { expiresIn: config.app.auth.expiresIn });
+    console.info(`genToken: ${token}`);
+    return token;
+  }
+
+  public static verifyToken(token: string): IVerifyTokenResult {
+    try {
+      const decoded = jwt.verify(token, config.app.auth.secret);
+      console.debug('verifyToken - decoded info: %o', decoded);
+      return { success: true, decodedToken: decoded };
+    } catch (err) {
+      console.error(err);
+
+      let retError = new BadRequestError('token验证失败');
+      if (err.name === 'JsonWebTokenError' && err.message === 'jwt must be provided') {
+        retError = new BadRequestError('必须提供token');
+      } else if (err.name === 'TokenExpiredError' && err.message === 'jwt expired') {
+        retError = new BadRequestError('token超时错误');
+      }
+
+      return { success: false, error: retError };
+    }
+  }
+}
