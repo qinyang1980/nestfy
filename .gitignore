@@ -1,0 +1,25 @@
+# modules
+node_modules
+dist
+deploy
+
+# OSX
+#
+.DS_Store
+
+# npm debug file
+npm-debug.log
+
+# logs
+logs
+
+*.suo
+
+# 过滤数据库文件、sln解决方案文件、配置文件
+*.mdb
+*.ldb
+
+# 过滤文件夹Debug,Release,obj
+Debug/
+Release/
+obj/
