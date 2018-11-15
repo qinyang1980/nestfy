@@ -1,4 +1,4 @@
-import { InternalServerError } from '../../../candy';
+import { InternalServerErrorException } from '../../../candy/web/common';
 
 /**
  * @author hai.zhang
@@ -77,7 +77,7 @@ export const error = {
       code = '-5000';
     }
     const msg = errors[code];
-    const ise = new InternalServerError(msg);
+    const ise = new InternalServerErrorException(msg);
     (ise as any).errno = code;
     return ise;
   }
