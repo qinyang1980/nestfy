@@ -1,16 +1,12 @@
 import { Module } from '../../../candy/web/common';
-import { DatabaseModule } from '../database/database.module';
+import { TypeOrmModule } from '../../../candy/web/typeorm';
 import { PhotoController } from './photo.controller';
-import { photoProviders } from './photo.providers';
+import { Photo } from './photo.entity';
 import { PhotoService } from './photo.service';
 
 @Module({
-  modules: [DatabaseModule],
-  controllers: [PhotoController],
-  components: [
-    ...photoProviders,
-    PhotoService
-  ],
-  exports: [PhotoService]
+  imports: [TypeOrmModule.forFeature([Photo])],
+  providers: [PhotoService],
+  controllers: [PhotoController]
 })
-export class PhotoModule { }
+export class PhotoModule {}

@@ -1,22 +1,21 @@
-import { Guard } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CanActivate, ExecutionContext } from '@nestjs/common/interfaces';
 import { Reflector } from '@nestjs/core';
 import * as express from 'express';
 import config from '../config';
 import { AUTH_SYMBOL } from '../constants';
-import { ResponseUtil } from '../utils';
 import { IVerifyTokenResult, TokenUtil } from '../utils/token.util';
 
 /**
  * @description 通用的验证token的保护器
  */
-@Guard()
+@Injectable()
 export class AuthGuard implements CanActivate {
   constructor(private readonly reflector: Reflector) {}
 
-  public canActivate(req: express.Request, context: ExecutionContext): boolean {
-    const { parent, handler } = context;
-    const needVerifyToken = this.reflector.get<boolean>(AUTH_SYMBOL, handler);
+  public canActivate(context: ExecutionContext): boolean {
+    const req: express.Request = context.switchToHttp().getRequest();
+    const needVerifyToken = this.reflector.get<boolean>(AUTH_SYMBOL, context.getHandler());
     if (needVerifyToken === false) {
       return true;
     }

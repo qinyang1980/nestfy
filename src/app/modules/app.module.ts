@@ -1,7 +1,8 @@
-import { MiddlewaresConsumer, Module, NestModule, RequestMethod } from '../../candy/web/common';
+import { Module } from '../../candy/web/common';
+import { TypeOrmModule } from '../../candy/web/typeorm';
 import { PhotoModule } from './photo/photo.module';
 
 @Module({
-  modules: [PhotoModule]
+  modules: [TypeOrmModule.forRoot(), PhotoModule]
 })
 export class ApplicationModule {}

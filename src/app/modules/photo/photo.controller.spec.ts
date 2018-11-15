@@ -1,6 +1,5 @@
 import { Test } from '@nestjs/testing';
 import { Repository } from 'typeorm';
-import { DatabaseModule } from '../database/database.module';
 import { PhotoController } from './photo.controller';
 import { Photo } from './photo.entity';
 import { PhotoService } from './photo.service';

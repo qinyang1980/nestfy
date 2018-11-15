@@ -1,6 +1,6 @@
+import { BadRequestException } from '@nestjs/common';
 import * as jwt from 'jsonwebtoken';
 import config from '../config';
-import { BadRequestError } from '../http-errors/bad-request.error';
 
 export interface IVerifyTokenResult {
   /**
@@ -37,11 +37,11 @@ export class TokenUtil {
     } catch (err) {
       console.error(err);
 
-      let retError = new BadRequestError('token验证失败');
+      let retError = new BadRequestException('token验证失败');
       if (err.name === 'JsonWebTokenError' && err.message === 'jwt must be provided') {
-        retError = new BadRequestError('必须提供token');
+        retError = new BadRequestException('必须提供token');
       } else if (err.name === 'TokenExpiredError' && err.message === 'jwt expired') {
-        retError = new BadRequestError('token超时错误');
+        retError = new BadRequestException('token超时错误');
       }
 
       return { success: false, error: retError };

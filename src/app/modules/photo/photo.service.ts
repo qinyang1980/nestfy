@@ -1,10 +1,14 @@
 import { Repository } from '../../../candy/orm';
-import { Component, Inject } from '../../../candy/web/common';
+import { Injectable } from '../../../candy/web/common';
+import { InjectRepository } from '../../../candy/web/typeorm';
 import { Photo } from './photo.entity';
 
-@Component()
+@Injectable()
 export class PhotoService {
-  constructor(@Inject('PhotoRepositoryToken') private readonly _photoRepository: Repository<Photo>) {}
+  constructor(
+    @InjectRepository(Photo)
+    private readonly _photoRepository: Repository<Photo>
+  ) {}
 
   /**
    * 获取所有photos记录，并且返回总数
@@ -24,7 +28,7 @@ export class PhotoService {
    * 根据id获取单个photo
    */
   public async findOneById(id: number): Promise<Photo> {
-    return this._photoRepository.findOneById(id);
+    return this._photoRepository.findOne(id);
   }
 
   /**

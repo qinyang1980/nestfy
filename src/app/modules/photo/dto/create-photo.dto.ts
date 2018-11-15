@@ -1,5 +1,5 @@
-import { ApiModelProperty } from '@nestjs/swagger';
 import { IsBoolean, IsInt, IsString } from 'class-validator';
+import { ApiModelProperty } from '../../../../candy/swagger';
 
 export class CreatePhotoDto {
   @IsString()

@@ -1,10 +1,9 @@
-import { HttpException } from '@nestjs/common';
-import { ArgumentMetadata, HttpStatus, Pipe, PipeTransform } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
+import { ArgumentMetadata, PipeTransform } from '@nestjs/common';
 import { plainToClass } from 'class-transformer';
 import { validate } from 'class-validator';
-import { BadRequestError } from '../http-errors/bad-request.error';
 
-@Pipe()
+@Injectable()
 export class ValidationPipe implements PipeTransform<any> {
   public async transform(value: any, metadata: ArgumentMetadata): Promise<any> {
     const { metatype } = metadata;
@@ -19,7 +18,9 @@ export class ValidationPipe implements PipeTransform<any> {
       return value;
     }
 
-    const err = new BadRequestError(`You have an error in your request's body. Check 'errors' field for more details!`);
+    const err = new BadRequestException(
+      `You have an error in your request's body. Check 'errors' field for more details!`
+    );
     (err as any).errors = errors;
 
     throw err;
