@@ -2,7 +2,7 @@
   "name": "candy",
   "version": "0.3.6",
   "description": "基于Nest和typeorm的后台框架",
-  "author": "andy.qin",
+  "author": "andy.qin <qinyang_1980@qq.com>",
   "license": "ISC",
   "scripts": {
     "tsc": "tsc",
