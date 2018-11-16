@@ -1,7 +1,7 @@
 {
   "app": {
     "port": 3000,
-    "setUpMsg": "Candy server is listening on port 3000",
+    "setUpMsg": "Candy server started",
     "cors": {
       "enable": true
     },
