@@ -1,4 +1,4 @@
-import { InternalServerErrorException } from '../../../candy/web/common';
+import { InternalServerErrorException } from '@nestjs/common';
 
 /**
  * @author hai.zhang

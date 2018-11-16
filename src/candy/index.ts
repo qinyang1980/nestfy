@@ -1,5 +1,5 @@
-export * from './lib/decorators/auth.decorator';
-export * from './lib/error';
+export * from './decorators/auth.decorator';
+export * from './error';
 
-import { AppUtil, LogUtil } from './lib/utils';
+import { AppUtil, LogUtil } from './utils';
 export { AppUtil, LogUtil };
