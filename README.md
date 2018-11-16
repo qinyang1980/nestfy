@@ -1,4 +1,4 @@
-# Candy框架
+# Nestfy框架
 一个基于Nestjs的后台框架
 
 - [主要功能](#主要功能)
@@ -8,22 +8,24 @@
 ## 主要功能
 
 - 实现了 token 模块
-- 实现了 AppUtil 模块
+- 实现了 AppUtil 模块, 让建立APP配置化
 - 实现了 log 模块
+- 实现了 统一异常 处理
+- 实现了 统一返回值 格式化 处理
 
 ## 导入方式
 
 1. 导入 工具类 
 ```js
-import { Auth } from 'candy';
-import { AppUtil, LogUtil } from 'candy';
+import { Auth } from 'nestfy';
+import { AppUtil, LogUtil } from 'nestfy';
 ```
 
 ## 用法
 
 1. AppUtil
 
-  * 将candy.json文件放在工程的根目录，写法如下：
+  * 将nestfy.json文件放在工程的根目录，写法如下：
 
 ```json
 {
@@ -53,7 +55,7 @@ import { AppUtil, LogUtil } from 'candy';
   },
   "swagger": {
     "enable": true,
-    "title": "candy-starter",
+    "title": "nestfy-starter",
     "description": "The photo API description",
     "version": "1.0",
     "path": "/doc"
@@ -63,7 +65,7 @@ import { AppUtil, LogUtil } from 'candy';
   * 然后在程序中导入 AppUtil 类，如下使用方式：
 
 ```js
-import { AppUtil } from 'candy';
+import { AppUtil } from 'nestfy';
 import { ApplicationModule } from './modules/app.module';
 
 AppUtil.bootstrap(ApplicationModule);

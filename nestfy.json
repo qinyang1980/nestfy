@@ -25,7 +25,7 @@
   },
   "swagger": {
     "enable": true,
-    "title": "candy-starter",
+    "title": "nestfy-starter",
     "description": "The photo API description",
     "version": "1.0",
     "path": "/doc"
