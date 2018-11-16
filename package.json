@@ -1,7 +1,7 @@
 {
   "name": "candy",
   "version": "0.5.0",
-  "description": "基于Nest和typeorm的后台框架",
+  "description": "基于Nestjs的后台框架",
   "author": "andy.qin <qinyang_1980@qq.com>",
   "license": "ISC",
   "scripts": {
