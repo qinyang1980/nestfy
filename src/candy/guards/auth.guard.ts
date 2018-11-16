@@ -14,6 +14,7 @@ export class AuthGuard implements CanActivate {
   constructor(private readonly reflector: Reflector) {}
 
   public canActivate(context: ExecutionContext): boolean {
+    console.log('test');
     const req: express.Request = context.switchToHttp().getRequest();
     const needVerifyToken = this.reflector.get<boolean>(AUTH_SYMBOL, context.getHandler());
     if (needVerifyToken === false) {

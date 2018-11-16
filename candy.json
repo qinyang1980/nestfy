@@ -16,7 +16,7 @@
       "enable": true
     },
     "auth": {
-      "enable": false,
+      "enable": true,
       "headerTag": "x-access-token",
       "secret": "i6r5LgMJdoa5trlM",
       "expiresIn": "24h",

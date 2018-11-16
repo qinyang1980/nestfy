@@ -32,9 +32,9 @@ export interface ICustomResponse {
 function failedJson(error: any): ICustomResponse {
   const result: ICustomResponse = {
     success: error.status === 200,
-    status: error.httpCode || error.status || 500,
+    status: error.status || 500,
     message: error.message || null,
-    errors: error.errors || null
+    errors: error.errors || undefined
   };
   return { ...result, ...error };
 }

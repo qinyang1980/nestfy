@@ -27,7 +27,7 @@ function handleHttpException(exception: HttpException): Error {
     err = new Error((res as any).message);
   }
 
-  err.httpCode = exception.getStatus();
-  err.errors = (exception as any).errors || null;
+  err.status = exception.getStatus();
+  err.errors = (exception as any).errors || undefined;
   return err;
 }

@@ -1,4 +1,4 @@
-import { ForbiddenException, ParseIntPipe } from '@nestjs/common';
+import { ForbiddenException, ParseIntPipe, UseGuards } from '@nestjs/common';
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { ApiUseTags } from '@nestjs/swagger';
 import { Auth } from '../../../candy';
