@@ -34,6 +34,8 @@
     "mysql": "^2.16.0",
     "redis": "^2.8.0",
     "reflect-metadata": "^0.1.12",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
     "rxjs": "^6.3.3",
     "typeorm": "^0.2.9"
   },

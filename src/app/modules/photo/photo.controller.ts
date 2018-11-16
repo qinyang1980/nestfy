@@ -1,6 +1,7 @@
 import { ForbiddenException, ParseIntPipe, UseGuards } from '@nestjs/common';
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { ApiUseTags } from '@nestjs/swagger';
+import * as rp from 'request-promise';
 import { Auth } from '../../../candy';
 import config from '../../common/config';
 import logger from '../../common/utils/logger';
@@ -42,6 +43,19 @@ export class PhotoController {
   @Delete(':id')
   public async remove(@Param('id', new ParseIntPipe()) id: number): Promise<any> {
     return this._photoService.remove(id);
+  }
+
+  // 转发测试
+  @Get('transfer/test')
+  @Auth(false)
+  public async transfer(): Promise<any> {
+    const options = {
+      uri: 'https://jsonplaceholder.typicode.com/todos',
+      json: true
+    };
+
+    const ret = await rp(options);
+    return ret;
   }
 
   // 异常测试
