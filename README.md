@@ -31,7 +31,7 @@ import { AppUtil, LogUtil } from 'nestfy';
 {
   "app": {
     "port": 3000,
-    "setUpMsg": "Candy server started.",
+    "setUpMsg": "Nestfy server started.",
     "cors": {
       "enable": true
     },
