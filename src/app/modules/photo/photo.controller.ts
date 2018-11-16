@@ -2,7 +2,7 @@ import { ForbiddenException, ParseIntPipe, UseGuards } from '@nestjs/common';
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { ApiUseTags } from '@nestjs/swagger';
 import * as rp from 'request-promise';
-import { Auth } from '../../../candy';
+import { Auth } from '../../../nestfy';
 import config from '../../common/config';
 import logger from '../../common/utils/logger';
 import { CreatePhotoDto } from './dto/create-photo.dto';
