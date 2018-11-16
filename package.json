@@ -3,6 +3,9 @@
   "version": "0.5.0",
   "description": "基于Nestjs的后台框架",
   "author": "andy.qin <qinyang_1980@qq.com>",
+  "repository": {
+    "url": "https://github.com/qinyang1980/candy"
+  },
   "license": "ISC",
   "scripts": {
     "tsc": "tsc",
