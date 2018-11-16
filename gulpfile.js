@@ -19,10 +19,10 @@ console.log(`The env is (${env})`);
 ////////////////////////////////////////////////////
 
 gulp.task('default', ['build']);
-gulp.task('start', ['build'], shell.task(['node index.js']));
+gulp.task('start', ['build'], shell.task(['ts-node src/app/server.ts']));
 gulp.task('build', ['deploy'], shell.task(['yarn run tsc']));
 
-gulp.task('start:prod', ['build'], shell.task(['node build/dist/server.js']));
+gulp.task('start:prod', ['build'], shell.task(['node build/app/server.js']));
 gulp.task('test', ['tslint'], shell.task(['jest --config=jest.json']));
 gulp.task('test:watch', ['tslint'], shell.task(['jest --watch --config=jest.json']));
 gulp.task('test:coverage', ['tslint'], shell.task(['jest --config=jest.json --coverage --coverageDirectory=coverage']));
@@ -48,12 +48,9 @@ gulp.task('tslint', () => {
 ////////////////////////////////////////////////////
 
 function deploy() {
-  const srcFolder = path.join(__dirname, './src');
   const distFolder = path.join(__dirname, './build/candy');
   const appPackageConfig = path.join(__dirname, './package.json');
   const readme = path.join(__dirname, './README.md');
-
-  // fs.mkdirsSync(distFolder + '/logs');
 
   fs.copySync(readme, `${distFolder}/README.md`);
 
@@ -65,10 +62,10 @@ function deploy() {
 
 ///////////////////////////////////////////////////
 
-gulp.task('clean-dist', () => {
-  return del('./build/dist/', { force: true });
+gulp.task('clean', () => {
+  return del('./build/', { force: true });
 });
 
-gulp.task('deploy', ['clean-dist', 'tslint'], () => {
+gulp.task('deploy', ['clean', 'tslint'], () => {
   return deploy();
 });
