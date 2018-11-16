@@ -1,34 +1,35 @@
-import * as express from 'express';
-import * as bodyParser from 'body-parser';
-import * as request from 'supertest';
+import { INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
+import * as request from 'supertest';
 import { PhotoModule } from '../../src/app/modules/photo/photo.module';
 import { PhotoService } from '../../src/app/modules/photo/photo.service';
 
 describe('Photos', () => {
-  const server = express();
-  server.use(bodyParser.json());
-
+  let app: INestApplication;
   const photoService = { findAll: () => ['test'] };
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      modules: [PhotoModule]
+      imports: [PhotoModule]
     })
-      .overrideComponent(PhotoService)
+      .overrideProvider(PhotoService)
       .useValue(photoService)
       .compile();
 
-    const app = module.createNestApplication(server);
+    app = module.createNestApplication();
     await app.init();
   });
 
   it(`/GET photos`, () => {
-    return request(server)
+    return request(app.getHttpServer())
       .get('/photos')
       .expect(200)
       .expect({
         data: photoService.findAll()
       });
+  });
+
+  afterAll(async () => {
+    await app.close();
   });
 });
