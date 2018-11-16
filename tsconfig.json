@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2015",
+    "target": "es2017",
     "module": "commonjs",
     "declaration": true,
     "noImplicitAny": false,
@@ -13,6 +13,6 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
-  "include": ["src/candy/**/*"],
-  "exclude": ["node_modules", "build", "dist"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "build", "dist", "**/*.spec.ts"]
 }

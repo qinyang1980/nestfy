@@ -1,5 +1,5 @@
-import { Module } from '../../../candy/web/common';
-import { TypeOrmModule } from '../../../candy/web/typeorm';
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { PhotoController } from './photo.controller';
 import { Photo } from './photo.entity';
 import { PhotoService } from './photo.service';

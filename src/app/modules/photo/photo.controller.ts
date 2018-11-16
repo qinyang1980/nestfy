@@ -1,14 +1,14 @@
+import { ForbiddenException, ParseIntPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { ApiUseTags } from '@nestjs/swagger';
 import { Auth } from '../../../candy';
-import { ApiUseTags } from '../../../candy/swagger';
-import { ForbiddenException, ParseIntPipe } from '../../../candy/web/common';
-import { Body, Controller, Delete, Get, Param, Post, Put } from '../../../candy/web/common';
 import config from '../../common/config';
 import logger from '../../common/utils/logger';
 import { CreatePhotoDto } from './dto/create-photo.dto';
 import { Photo } from './photo.entity';
 import { PhotoService } from './photo.service';
 
-// @ApiUseTags('photos')
+@ApiUseTags('photos')
 @Controller('photos')
 export class PhotoController {
   constructor(private readonly _photoService: PhotoService) {}
@@ -30,19 +30,12 @@ export class PhotoController {
 
   @Get(':id')
   @Auth(false)
-  public findOne(
-    @Param('id', new ParseIntPipe())
-    id: number
-  ): Promise<Photo> {
+  public findOne(@Param('id', new ParseIntPipe()) id: number): Promise<Photo> {
     return this._photoService.findOneById(id);
   }
 
   @Put(':id')
-  public async modify(
-    @Param('id', new ParseIntPipe())
-    id: number,
-    @Body() photo: CreatePhotoDto
-  ): Promise<Photo> {
+  public async modify(@Param('id', new ParseIntPipe()) id: number, @Body() photo: CreatePhotoDto): Promise<Photo> {
     return this._photoService.modify(id, photo as Photo);
   }
 

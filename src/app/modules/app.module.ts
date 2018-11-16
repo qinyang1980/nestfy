@@ -1,15 +1,18 @@
-import { Module } from '../../candy/web/common';
-import { TypeOrmModule } from '../../candy/web/typeorm';
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConnectionOptions } from 'typeorm';
+import config from '../common/config';
 import { PhotoModule } from './photo/photo.module';
 
 @Module({
+  // imports: [TypeOrmModule.forRoot(config.mysql as ConnectionOptions), PhotoModule]
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'shejijia',
+      password: 'root',
       database: 'test',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true

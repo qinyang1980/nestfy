@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from '../../../candy/orm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Photo {
