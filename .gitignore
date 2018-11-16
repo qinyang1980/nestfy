@@ -4,6 +4,9 @@ dist
 deploy
 build
 
+# jest ut files
+coverage
+
 # OSX
 #
 .DS_Store
