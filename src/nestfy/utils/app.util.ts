@@ -59,7 +59,7 @@ export class AppUtil {
     }
 
     app.listen(config.app.port, () => {
-      console.info(config.app.setUpMsg);
+      logger.info(config.app.setUpMsg);
     });
   }
 }

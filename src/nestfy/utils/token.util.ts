@@ -1,6 +1,7 @@
 import { BadRequestException } from '@nestjs/common';
 import * as jwt from 'jsonwebtoken';
 import config from '../config';
+import { logger } from '../utils/log.util';
 
 export interface IVerifyTokenResult {
   /**
@@ -25,17 +26,17 @@ export class TokenUtil {
   public static genToken(payload: any): string {
     const plainObj = Object.assign({}, payload);
     const token = jwt.sign(plainObj, config.app.auth.secret, { expiresIn: config.app.auth.expiresIn });
-    console.info(`genToken: ${token}`);
+    logger.info(`genToken: ${token}`);
     return token;
   }
 
   public static verifyToken(token: string): IVerifyTokenResult {
     try {
       const decoded = jwt.verify(token, config.app.auth.secret);
-      console.debug('verifyToken - decoded info: %o', decoded);
+      logger.debug('verifyToken - decoded info: %o', decoded);
       return { success: true, decodedToken: decoded };
     } catch (err) {
-      console.error(err);
+      logger.error(err);
 
       let retError = new BadRequestException('token验证失败');
       if (err.name === 'JsonWebTokenError' && err.message === 'jwt must be provided') {
