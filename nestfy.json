@@ -2,6 +2,11 @@
   "app": {
     "port": 3000,
     "setUpMsg": "Nestfy server started",
+    "log": {
+      "enable": true,
+      "level": "debug",
+      "traceRequestDuration": true
+    },
     "cors": {
       "enable": true
     },
@@ -12,11 +17,8 @@
     "validation": {
       "enable": true
     },
-    "logRequest": {
-      "enable": true
-    },
     "auth": {
-      "enable": true,
+      "enable": false,
       "headerTag": "x-access-token",
       "secret": "i6r5LgMJdoa5trlM",
       "expiresIn": "24h",

@@ -8,6 +8,7 @@ import { AuthGuard } from '../guards/auth.guard';
 import { TransformInterceptor } from '../interceptors/transform.interceptor';
 import { requestLogMiddleware } from '../middlewares/request-log.middleware';
 import { ValidationPipe } from '../pipes/validation.pipe';
+import { logger } from './log.util';
 
 export class AppUtil {
   public static async bootstrap(appModule: any): Promise<void> {
@@ -23,9 +24,12 @@ export class AppUtil {
       app.use(cors());
     }
 
-    // 记录请求日志
-    if (config.app.logRequest.enable) {
-      app.use(requestLogMiddleware);
+    // 日志配置
+    if (config.app.log.enable) {
+      logger.level = config.app.log.level;
+      if (config.app.log.traceRequestDuration) {
+        app.use(requestLogMiddleware);
+      }
     }
 
     // 校验Request

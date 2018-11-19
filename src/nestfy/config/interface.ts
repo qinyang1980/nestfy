@@ -11,8 +11,10 @@ export interface IValidation {
   enable: boolean;
 }
 
-export interface ILogRequest {
+export interface ILog {
   enable: boolean;
+  level: string;
+  traceRequestDuration: boolean;
 }
 
 export interface IAuth {
@@ -27,9 +29,9 @@ export interface IApp {
   port: number;
   setUpMsg: string;
   cors: ICors;
+  log: ILog;
   bodyParser: IBodyParser;
   validation: IValidation;
-  logRequest: ILogRequest;
   auth: IAuth;
 }
 
