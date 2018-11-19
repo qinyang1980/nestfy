@@ -1,4 +1,4 @@
-import { AppUtil } from '../nestfy';
+import { NestfyApp } from '../nestfy';
 import { ApplicationModule } from './modules/app.module';
 
-AppUtil.bootstrap(ApplicationModule);
+NestfyApp.bootstrap(ApplicationModule);

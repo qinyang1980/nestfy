@@ -1,5 +1,5 @@
 export * from './decorators/auth.decorator';
 export * from './guards/auth.guard';
 
-import { AppUtil, LogUtil } from './utils';
-export { AppUtil, LogUtil };
+import { AppUtil, logger } from './utils';
+export { AppUtil as NestfyApp, logger };
