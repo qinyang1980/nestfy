@@ -20,7 +20,7 @@ export class PhotoController {
 
   @Get()
   public async findAllAndCount(): Promise<any> {
-    logger.debug('findall test');
+    logger.info('call findAllAndCount');
     return this._photoService.findAllAndCount();
   }
 
