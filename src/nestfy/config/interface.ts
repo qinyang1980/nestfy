@@ -30,9 +30,15 @@ export interface IApp {
   setUpMsg: string;
   cors: ICors;
   log: ILog;
+  routingPrefix: IRoutingPrefix;
   bodyParser: IBodyParser;
   validation: IValidation;
   auth: IAuth;
+}
+
+export interface IRoutingPrefix {
+  enable: boolean;
+  prefix: string;
 }
 
 export interface ISwagger {

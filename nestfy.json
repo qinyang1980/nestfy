@@ -7,6 +7,10 @@
       "level": "debug",
       "traceRequestDuration": true
     },
+    "routingPrefix": {
+      "enable": true,
+      "prefix": "/v1/api"
+    },
     "cors": {
       "enable": true
     },

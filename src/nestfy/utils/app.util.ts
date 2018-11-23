@@ -10,6 +10,7 @@ import { requestLogMiddleware } from '../middlewares/request-log.middleware';
 import { ValidationPipe } from '../pipes/validation.pipe';
 import { logger } from './log.util';
 
+/* tslint:disable */
 export class AppUtil {
   public static async bootstrap(appModule: any): Promise<void> {
     const app = await NestFactory.create(appModule);
@@ -35,6 +36,11 @@ export class AppUtil {
     // 校验Request
     if (config.app.validation.enable) {
       app.useGlobalPipes(new ValidationPipe());
+    }
+
+    // 路由前缀
+    if (config.app.routingPrefix.enable) {
+      app.setGlobalPrefix(config.app.routingPrefix.prefix);
     }
 
     // token校验
