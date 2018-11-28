@@ -62,9 +62,5 @@
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.16.0",
     "typescript": "^3.1.6"
-  },
-  "prettier": {
-    "printWidth": 120,
-    "singleQuote": true
   }
 }

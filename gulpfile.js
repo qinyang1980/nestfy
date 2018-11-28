@@ -48,7 +48,7 @@ gulp.task('tslint', () => {
 ////////////////////////////////////////////////////
 
 function deploy() {
-  const distFolder = path.join(__dirname, './build/nestfy');
+  const distFolder = path.join(__dirname, './build/lib');
   const appPackageConfig = path.join(__dirname, './package.json');
   const readme = path.join(__dirname, './README.md');
 
