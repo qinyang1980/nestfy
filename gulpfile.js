@@ -19,10 +19,10 @@ console.log(`The env is (${env})`);
 ////////////////////////////////////////////////////
 
 gulp.task('default', ['build']);
-gulp.task('start', ['build'], shell.task(['ts-node src/app/server.ts']));
+gulp.task('start', ['build'], shell.task(['ts-node src/testing/server.ts']));
 gulp.task('build', ['deploy'], shell.task(['yarn run tsc']));
 
-gulp.task('start:prod', ['build'], shell.task(['node build/app/server.js']));
+gulp.task('start:prod', ['build'], shell.task(['node build/testing/server.js']));
 gulp.task('test', ['tslint'], shell.task(['jest --config=jest.json']));
 gulp.task('test:watch', ['tslint'], shell.task(['jest --watch --config=jest.json']));
 gulp.task('test:coverage', ['tslint'], shell.task(['jest --config=jest.json --coverage --coverageDirectory=coverage']));
