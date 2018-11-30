@@ -33,7 +33,9 @@
     "enable": true,
     "title": "nestfy-starter",
     "description": "The photo API description",
+    "schemas": "http",
     "version": "1.0",
+    "email": "qinyang_1980@qq.com",
     "path": "/doc"
   }
 }

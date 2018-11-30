@@ -54,12 +54,17 @@ export class AppUtil {
     // 统一response格式化处理
     app.useGlobalInterceptors(new TransformInterceptor());
 
+    const schemas =
+      config.swagger.schemas === 'http' || config.swagger.schemas === 'https' ? config.swagger.schemas : 'http';
+
     if (config.swagger.enable) {
       const options = new DocumentBuilder()
         .setTitle(config.swagger.title)
         .setBasePath(config.app.routingPrefix.prefix)
         .setDescription(config.swagger.description)
         .setVersion(config.swagger.version)
+        .setSchemes(schemas)
+        .setContactEmail(config.swagger.email)
         .build();
       const document = SwaggerModule.createDocument(app, options);
       SwaggerModule.setup(config.swagger.path, app, document);

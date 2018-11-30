@@ -45,7 +45,9 @@ export interface ISwagger {
   enable: boolean;
   title: string;
   description: string;
+  schemas: string;
   version: string;
+  email: string;
   path: string;
 }
 
