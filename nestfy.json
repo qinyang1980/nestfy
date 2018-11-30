@@ -9,7 +9,7 @@
     },
     "routingPrefix": {
       "enable": true,
-      "prefix": "/v1/api"
+      "prefix": "/api/rest"
     },
     "cors": {
       "enable": true

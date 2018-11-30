@@ -57,6 +57,7 @@ export class AppUtil {
     if (config.swagger.enable) {
       const options = new DocumentBuilder()
         .setTitle(config.swagger.title)
+        .setBasePath(config.app.routingPrefix.prefix)
         .setDescription(config.swagger.description)
         .setVersion(config.swagger.version)
         .build();
