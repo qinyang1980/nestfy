@@ -9,7 +9,7 @@ import { Photo } from './photo.entity';
 import { PhotoService } from './photo.service';
 
 @ApiUseTags('photos')
-@Controller('photos')
+@Controller('v1/photos')
 export class PhotoController {
   constructor(private readonly _photoService: PhotoService) {}
 
