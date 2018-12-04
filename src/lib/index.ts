@@ -1,4 +1,4 @@
-export * from './decorators/auth.decorator';
+export * from './decorators';
 export * from './guards/auth.guard';
 
 import { AppUtil, logger } from './utils';

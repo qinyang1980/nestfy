@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "启动程序",
       "runtimeArgs": ["-r", "ts-node/register"],
-      "args": ["${workspaceFolder}/src/app/server.ts"]
+      "args": ["${workspaceFolder}/src/testing/server.ts"]
     }
   ]
 }

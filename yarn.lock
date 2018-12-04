@@ -171,6 +171,14 @@
   dependencies:
     "@types/node" "*"
 
+"@types/node-schedule@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.npmjs.org/@types/node-schedule/-/node-schedule-1.2.2.tgz#bb5beae99b7327b4f2ddc1834f1fdae4378891b0"
+  integrity sha512-tPZexm6xqXT550VpbiktBFDoSJLBGSaBEM1cThP5NKvH7w6W6dMAkHl81ffxmYmMoskvEkLUoGvtSmNNpBhNiw==
+  dependencies:
+    "@types/events" "*"
+    "@types/node" "*"
+
 "@types/node@*":
   version "10.12.8"
   resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-10.12.8.tgz#d0a3ab5a6e61458c492304e2776ac136b81db927"
@@ -1215,6 +1223,14 @@ cors@^2.8.5:
     object-assign "^4"
     vary "^1"
 
+cron-parser@^2.7.3:
+  version "2.7.3"
+  resolved "https://registry.npmjs.org/cron-parser/-/cron-parser-2.7.3.tgz#12603f89f5375af353a9357be2543d3172eac651"
+  integrity sha512-t9Kc7HWBWPndBzvbdQ1YG9rpPRB37Tb/tTviziUOh1qs3TARGh3b1p+tnkOHNe1K5iI3oheBPgLqwotMM7+lpg==
+  dependencies:
+    is-nan "^1.2.1"
+    moment-timezone "^0.5.23"
+
 cross-spawn@^5.0.1:
   version "5.1.0"
   resolved "http://registry.npm.taobao.org/cross-spawn/download/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
@@ -1324,7 +1340,7 @@ defaults@^1.0.0:
   dependencies:
     clone "^1.0.2"
 
-define-properties@^1.1.2:
+define-properties@^1.1.1, define-properties@^1.1.2:
   version "1.1.3"
   resolved "http://registry.npm.taobao.org/define-properties/download/define-properties-1.1.3.tgz#cf88da6cbee26fe6db7094f61d870cbd84cee9f1"
   integrity sha1-z4jabL7ib+bbcJT2HYcMvYTO6fE=
@@ -2753,6 +2769,13 @@ is-glob@^3.1.0:
   dependencies:
     is-extglob "^2.1.0"
 
+is-nan@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.npmjs.org/is-nan/-/is-nan-1.2.1.tgz#9faf65b6fb6db24b7f5c0628475ea71f988401e2"
+  integrity sha1-n69ltvttskt/XAYoR16nH5iEAeI=
+  dependencies:
+    define-properties "^1.1.1"
+
 is-number@^2.1.0:
   version "2.1.0"
   resolved "http://registry.npm.taobao.org/is-number/download/is-number-2.1.0.tgz#01fcbbb393463a548f2f466cce16dece49db908f"
@@ -3698,6 +3721,11 @@ log4js@^3.0.6:
     rfdc "^1.1.2"
     streamroller "0.7.0"
 
+long-timeout@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.npmjs.org/long-timeout/-/long-timeout-0.1.1.tgz#9721d788b47e0bcb5a24c2e2bee1a0da55dab514"
+  integrity sha1-lyHXiLR+C8taJMLivuGg2lXatRQ=
+
 loose-envify@^1.0.0:
   version "1.4.0"
   resolved "http://registry.npm.taobao.org/loose-envify/download/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
@@ -3946,6 +3974,18 @@ mkdirp@0.5.1, mkdirp@0.x, mkdirp@^0.5.0, mkdirp@^0.5.1:
   dependencies:
     minimist "0.0.8"
 
+moment-timezone@^0.5.23:
+  version "0.5.23"
+  resolved "https://registry.npmjs.org/moment-timezone/-/moment-timezone-0.5.23.tgz#7cbb00db2c14c71b19303cb47b0fb0a6d8651463"
+  integrity sha512-WHFH85DkCfiNMDX5D3X7hpNH3/PUhjTGcD0U1SgfBGZxJ3qUmJh5FdvaFjcClxOvB3rzdfj4oRffbI38jEnC1w==
+  dependencies:
+    moment ">= 2.9.0"
+
+"moment@>= 2.9.0":
+  version "2.22.2"
+  resolved "https://registry.npmjs.org/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
+  integrity sha1-PCV/mDn8DpP/UxSWMiOeuQeD/2Y=
+
 ms@2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/ms/download/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -4082,6 +4122,15 @@ node-pre-gyp@^0.10.0:
     rimraf "^2.6.1"
     semver "^5.3.0"
     tar "^4"
+
+node-schedule@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.npmjs.org/node-schedule/-/node-schedule-1.3.1.tgz#6909dd644211bca153b15afc62e1dc0afa7d28be"
+  integrity sha512-cdNNePwKoisAi4DT00BB11H6IJ/WtA603YZ7+tLJcb/zCmCSxYKcvc+/GTyxC46jN/0ft7741vmMQrvxP8Sd+A==
+  dependencies:
+    cron-parser "^2.7.3"
+    long-timeout "0.1.1"
+    sorted-array-functions "^1.0.0"
 
 nopt@^4.0.1:
   version "4.0.1"
@@ -5176,6 +5225,11 @@ socket.io@^2.1.1:
     socket.io-adapter "~1.1.0"
     socket.io-client "2.1.1"
     socket.io-parser "~3.2.0"
+
+sorted-array-functions@^1.0.0:
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/sorted-array-functions/-/sorted-array-functions-1.2.0.tgz#43265b21d6e985b7df31621b1c11cc68d8efc7c3"
+  integrity sha512-sWpjPhIZJtqO77GN+LD8dDsDKcWZ9GCOJNqKzi1tvtjGIzwfoyuRH8S0psunmc6Z5P+qfDqztSbwYR5X/e1UTg==
 
 source-map-resolve@^0.5.0:
   version "0.5.2"

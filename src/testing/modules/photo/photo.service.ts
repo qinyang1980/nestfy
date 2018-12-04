@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { logger, task } from '../../../lib';
 import { Photo } from './photo.entity';
 
 @Injectable()
@@ -64,5 +65,10 @@ export class PhotoService {
       .createQueryBuilder('photo')
       .where('photo.id2 = :id', { id })
       .getMany();
+  }
+
+  @task({ cron: '*/1 * * * *' })
+  private testTask(): void {
+    logger.info('测试定期任务...');
   }
 }
