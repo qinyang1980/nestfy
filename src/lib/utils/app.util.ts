@@ -7,7 +7,7 @@ import { ErrorFilter } from '../filters/error.filter';
 import { AuthGuard } from '../guards/auth.guard';
 import { TransformInterceptor } from '../interceptors/transform.interceptor';
 import { requestLogMiddleware } from '../middlewares/request-log.middleware';
-import { ValidationPipe } from '../pipes/validation.pipe';
+import { ValidationPipe } from '../pipes';
 import { logger } from './log.util';
 
 /* tslint:disable */
@@ -35,7 +35,7 @@ export class AppUtil {
 
     // 校验Request
     if (config.app.validation.enable) {
-      app.useGlobalPipes(new ValidationPipe());
+      app.useGlobalPipes(new ValidationPipe({ skipMissingProperties: true }));
     }
 
     // 路由前缀

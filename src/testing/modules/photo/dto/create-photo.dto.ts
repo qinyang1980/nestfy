@@ -1,13 +1,15 @@
 import { ApiModelProperty } from '@nestjs/swagger';
-import { IsBoolean, IsInt, IsString } from 'class-validator';
+import { IsBoolean, IsDefined, IsInt, IsString } from 'class-validator';
 
 export class CreatePhotoDto {
-  @IsString()
   @ApiModelProperty()
+  @IsDefined()
+  @IsString()
   public name: string;
 
-  @IsString()
   @ApiModelProperty()
+  @IsDefined()
+  @IsString()
   public description: string;
 
   @IsString()
