@@ -15,36 +15,38 @@ export class AppUtil {
   public static async bootstrap(appModule: any): Promise<void> {
     const app = await NestFactory.create(appModule);
 
-    if (config.app.bodyParser.enable) {
-      app.use(bodyParser.json({ limit: config.app.bodyParser.limit }));
-      app.use(bodyParser.urlencoded({ limit: config.app.bodyParser.limit, extended: false }));
+    if (config.request.bodyParser.enable) {
+      app.use(bodyParser.json({ limit: config.request.bodyParser.limit }));
+      app.use(bodyParser.urlencoded({ limit: config.request.bodyParser.limit, extended: false }));
     }
 
     // 跨域支持
-    if (config.app.cors.enable) {
+    if (config.request.cors.enable) {
       app.use(cors());
     }
 
     // 日志配置
-    if (config.app.log.enable) {
-      logger.level = config.app.log.level;
-      if (config.app.log.traceRequestDuration) {
-        app.use(requestLogMiddleware);
-      }
+    if (config.logging.enable) {
+      logger.level = config.logging.level;
+    }
+
+    // 是否打印请求
+    if (config.request.traceRequestDuration) {
+      app.use(requestLogMiddleware);
     }
 
     // 校验Request
-    if (config.app.validation.enable) {
-      app.useGlobalPipes(new ValidationPipe({ skipMissingProperties: true }));
+    if (config.request.validation.enable) {
+      app.useGlobalPipes(new ValidationPipe({ skipMissingProperties: config.request.validation.skipMissingProperties }));
     }
 
     // 路由前缀
-    if (config.app.routingPrefix.enable) {
-      app.setGlobalPrefix(config.app.routingPrefix.prefix);
+    if (config.app.apiPrefix.enable) {
+      app.setGlobalPrefix(config.app.apiPrefix.prefix);
     }
 
     // token校验
-    if (config.app.auth.enable) {
+    if (config.request.auth.enable) {
       app.useGlobalGuards(new AuthGuard(new Reflector()));
     }
 
@@ -60,7 +62,7 @@ export class AppUtil {
     if (config.swagger.enable) {
       const options = new DocumentBuilder()
         .setTitle(config.swagger.title)
-        .setBasePath(config.app.routingPrefix.prefix)
+        .setBasePath(config.app.apiPrefix.prefix)
         .setDescription(config.swagger.description)
         .setVersion(config.swagger.version)
         .setSchemes(schemas)

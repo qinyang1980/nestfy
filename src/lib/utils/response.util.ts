@@ -1,16 +1,22 @@
+import config from '../config';
+
 /**
  * @author andy.qin
  * @description 统一定义返回结果的格式
  */
 export interface ICustomResponse {
   /**
+   * 时间戳
+   */
+  timestamp?: Date;
+  /**
    * 请求是否成功
    */
-  success: boolean;
+  success?: boolean;
   /**
    * HTTP状态码(200,400,404,500)
    */
-  status: number;
+  status?: number;
   /**
    * 成功才返回的查询数据
    */
@@ -22,31 +28,50 @@ export interface ICustomResponse {
   /**
    * 整体描述
    */
-  message: string;
+  message?: string;
+  /**
+   * HTTP请求路径
+   */
+  path?: string;
   /**
    * 扩展属性
    */
   [propName: string]: any;
 }
 
-function failedJson(error: any): ICustomResponse {
-  const result: ICustomResponse = {
-    success: error.status === 200,
-    status: error.status || 500,
-    message: error.message || null,
-    errors: error.errors || undefined
+function failedJson(path: string, error: any): ICustomResponse {
+  const result: ICustomResponse = {};
+  if (config.response.failure.successField.enable) {
+    result[config.response.failure.successField.name] = error.status === 200;
+  }
+  if (config.response.failure.statusField.enable) {
+    result[config.response.failure.statusField.name] = error.status || 500;
+  }
+
+  const fixedFields = {
+    timestamp: new Date(),
+    message: error.message || config.response.failure.defaultMessage,
+    errors: error.errors || undefined,
+    path: path || undefined
   };
-  return { ...result, ...error };
+
+  return { ...result, ...fixedFields, ...error };
 }
 
 function successJson(message: string, data: object | object[]): any {
-  const result: ICustomResponse = {
-    success: true,
-    status: 200,
+  const result: ICustomResponse = {};
+  if (config.response.failure.successField.enable) {
+    result[config.response.failure.successField.name] = true;
+  }
+  if (config.response.failure.statusField.enable) {
+    result[config.response.failure.statusField.name] = 200;
+  }
+  const fixedFields = {
     message: message || null,
     data: data || {}
   };
-  return result;
+
+  return { ...result, ...fixedFields };
 }
 
 function formatFindAndCount(content: any): any {
@@ -62,10 +87,10 @@ function formatFindAndCount(content: any): any {
 
 export class ResponseUtil {
   public static ok(data: object | object[]): ICustomResponse {
-    return successJson('Request success.', formatFindAndCount(data));
+    return successJson(config.response.success.defaultMessage, formatFindAndCount(data));
   }
 
-  public static err(error: any): ICustomResponse {
-    return failedJson(error);
+  public static err(path: string, error: any): ICustomResponse {
+    return failedJson(path, error);
   }
 }

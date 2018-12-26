@@ -7,7 +7,7 @@ import { IVerifyTokenResult, TokenUtil } from '../utils/token.util';
  * 校验token的中间件
  */
 export const verifyTokenMiddleware = (req, res, next) => {
-  const token = req.query.token || req.headers[config.app.auth.headerTag]; // 从query或者header中获取token
+  const token = req.query.token || req.headers[config.request.auth.headerTag]; // 从query或者header中获取token
   const result: IVerifyTokenResult = TokenUtil.verifyToken(token);
 
   if (result.success) {
@@ -15,6 +15,6 @@ export const verifyTokenMiddleware = (req, res, next) => {
     next();
   } else {
     // invalid
-    res.status(result.error.httpCode).json(ResponseUtil.err(result.error));
+    res.status(result.error.httpCode).json(ResponseUtil.err(req.url, result.error));
   }
 };

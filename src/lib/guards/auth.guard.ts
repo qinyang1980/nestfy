@@ -20,11 +20,11 @@ export class AuthGuard implements CanActivate {
       return true;
     }
 
-    const token = req.query.token || req.headers[config.app.auth.headerTag]; // 从query或者header中获取token
+    const token = req.query.token || req.headers[config.request.auth.headerTag]; // 从query或者header中获取token
     const result: IVerifyTokenResult = TokenUtil.verifyToken(token);
 
     if (result.success) {
-      req[config.app.auth.decodedTag] = result.decodedToken;
+      req[config.request.auth.decodedTag] = result.decodedToken;
       return true;
     } else {
       // invalid

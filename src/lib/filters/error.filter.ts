@@ -1,10 +1,12 @@
 import { ArgumentsHost, Catch, ExceptionFilter, HttpException } from '@nestjs/common';
+import * as express from 'express';
 import { ResponseUtil } from '../utils';
 
 @Catch(Error, HttpException)
 export class ErrorFilter implements ExceptionFilter {
   public catch(errorOrException: any, host: ArgumentsHost): void {
     const ctx = host.switchToHttp();
+    const request: express.Request = ctx.getRequest();
     const response = ctx.getResponse();
 
     let err = errorOrException;
@@ -12,7 +14,7 @@ export class ErrorFilter implements ExceptionFilter {
       err = handleHttpException(err);
     }
 
-    const ret = ResponseUtil.err(err);
+    const ret = ResponseUtil.err(request.url, err);
     response.status(ret.status).json(ret);
   }
 }

@@ -2,24 +2,27 @@
   "app": {
     "port": 3000,
     "setUpMsg": "Nestfy server started",
-    "log": {
-      "enable": true,
-      "level": "debug",
-      "traceRequestDuration": true
-    },
-    "routingPrefix": {
+    "apiPrefix": {
       "enable": true,
       "prefix": "/api/rest"
-    },
+    }
+  },
+  "logging": {
+    "enable": true,
+    "level": "debug"
+  },
+  "request": {
+    "traceRequestDuration": true,
     "cors": {
       "enable": true
     },
     "bodyParser": {
       "enable": true,
-      "limit": "10mb"
+      "limit": "5mb"
     },
     "validation": {
-      "enable": true
+      "enable": true,
+      "skipMissingProperties": true
     },
     "auth": {
       "enable": false,
@@ -27,6 +30,30 @@
       "secret": "i6r5LgMJdoa5trlM",
       "expiresIn": "24h",
       "decodedTag": "user"
+    }
+  },
+  "response": {
+    "success": {
+      "defaultMessage": "执行成功!",
+      "successField": {
+        "enable": true,
+        "name": "success"
+      },
+      "statusField": {
+        "enable": true,
+        "name": "status"
+      }
+    },
+    "failure": {
+      "defaultMessage": "执行失败!",
+      "successField": {
+        "enable": true,
+        "name": "success"
+      },
+      "statusField": {
+        "enable": true,
+        "name": "status"
+      }
     }
   },
   "swagger": {

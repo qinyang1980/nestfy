@@ -9,12 +9,12 @@ export interface IBodyParser {
 
 export interface IValidation {
   enable: boolean;
+  skipMissingProperties: boolean;
 }
 
 export interface ILog {
   enable: boolean;
   level: string;
-  traceRequestDuration: boolean;
 }
 
 export interface IAuth {
@@ -28,15 +28,10 @@ export interface IAuth {
 export interface IApp {
   port: number;
   setUpMsg: string;
-  cors: ICors;
-  log: ILog;
-  routingPrefix: IRoutingPrefix;
-  bodyParser: IBodyParser;
-  validation: IValidation;
-  auth: IAuth;
+  apiPrefix: IApiPrefix;
 }
 
-export interface IRoutingPrefix {
+export interface IApiPrefix {
   enable: boolean;
   prefix: string;
 }
@@ -51,7 +46,45 @@ export interface ISwagger {
   path: string;
 }
 
+export interface IRequest {
+  traceRequestDuration: boolean;
+  cors: ICors;
+  bodyParser: IBodyParser;
+  validation: IValidation;
+  auth: IAuth;
+}
+
 export interface IRootObject {
   app: IApp;
+  logging: ILog;
+  request: IRequest;
+  response: IResponse;
   swagger: ISwagger;
+}
+
+export interface ISuccessField {
+  enable: boolean;
+  name: string;
+}
+
+export interface IStatusField {
+  enable: boolean;
+  name: string;
+}
+
+export interface ISuccess {
+  defaultMessage: string;
+  successField: ISuccessField;
+  statusField: IStatusField;
+}
+
+export interface IFailure {
+  defaultMessage: string;
+  successField: ISuccessField;
+  statusField: IStatusField;
+}
+
+export interface IResponse {
+  success: ISuccess;
+  failure: IFailure;
 }

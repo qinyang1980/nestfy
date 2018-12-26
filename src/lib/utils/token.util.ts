@@ -25,14 +25,14 @@ export interface IVerifyTokenResult {
 export class TokenUtil {
   public static genToken(payload: any): string {
     const plainObj = Object.assign({}, payload);
-    const token = jwt.sign(plainObj, config.app.auth.secret, { expiresIn: config.app.auth.expiresIn });
+    const token = jwt.sign(plainObj, config.request.auth.secret, { expiresIn: config.request.auth.expiresIn });
     logger.info(`genToken: ${token}`);
     return token;
   }
 
   public static verifyToken(token: string): IVerifyTokenResult {
     try {
-      const decoded = jwt.verify(token, config.app.auth.secret);
+      const decoded = jwt.verify(token, config.request.auth.secret);
       logger.debug('verifyToken - decoded info: %o', decoded);
       return { success: true, decodedToken: decoded };
     } catch (err) {
