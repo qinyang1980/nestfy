@@ -19,7 +19,7 @@ export class ValidationPipe implements PipeTransform<any> {
     const errors = await validate(object, this.options);
 
     if (errors.length <= 0) {
-      return value;
+      return object; // 这里需要返回对象
     }
 
     const err = new BadRequestException(

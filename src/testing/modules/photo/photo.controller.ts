@@ -1,10 +1,11 @@
-import { ForbiddenException, ParseIntPipe, UseGuards } from '@nestjs/common';
+import { ForbiddenException, ParseIntPipe, Query, UseGuards } from '@nestjs/common';
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { ApiUseTags } from '@nestjs/swagger';
 import * as rp from 'request-promise';
 import { Auth, logger } from '../../../lib';
 import config from '../../common/config';
 import { CreatePhotoDto } from './dto/create-photo.dto';
+import { QueryPhotosDto } from './dto/query-photos.dto';
 import { Photo } from './photo.entity';
 import { PhotoService } from './photo.service';
 
@@ -19,8 +20,8 @@ export class PhotoController {
   }
 
   @Get()
-  public async findAllAndCount(): Promise<any> {
-    logger.info('call findAllAndCount');
+  public async findAllAndCount(@Query() query: QueryPhotosDto): Promise<any> {
+    logger.info(query);
     return this._photoService.findAllAndCount();
   }
 
