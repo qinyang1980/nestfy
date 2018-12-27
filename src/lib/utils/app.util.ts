@@ -22,7 +22,7 @@ export class AppUtil {
 
     // 跨域支持
     if (config.request.cors.enable) {
-      app.use(cors());
+      app.enableCors();
     }
 
     // 日志配置
