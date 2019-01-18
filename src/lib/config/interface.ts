@@ -1,3 +1,5 @@
+import { Configuration } from 'log4js';
+
 export interface ICors {
   enable: boolean;
 }
@@ -14,7 +16,7 @@ export interface IValidation {
 
 export interface ILog {
   enable: boolean;
-  level: string;
+  configuration: Configuration;
 }
 
 export interface IAuth {

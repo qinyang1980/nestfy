@@ -9,7 +9,15 @@
   },
   "logging": {
     "enable": true,
-    "level": "debug"
+    "configuration": {
+      "appenders": {
+        "txt": { "type": "dateFile", "filename": "./logs/nestfy.log" },
+        "out": { "type": "stdout" }
+      },
+      "categories": {
+        "default": { "appenders": ["out", "txt"], "level": "info" }
+      }
+    }
   },
   "request": {
     "traceRequestDuration": true,
