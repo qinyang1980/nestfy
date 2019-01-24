@@ -30,6 +30,7 @@
     "body-parser": "^1.18.3",
     "class-transformer": "^0.2.0",
     "class-validator": "^0.9.1",
+    "jsonc-parser": "^2.0.2",
     "jsonwebtoken": "^8.4.0",
     "log4js": "^3.0.6",
     "mkdirp": "0.5.1",

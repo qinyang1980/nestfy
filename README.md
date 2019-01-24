@@ -1,4 +1,5 @@
 # Nestfy框架
+
 一个基于Nestjs的后台框架
 
 - [主要功能](#主要功能)
@@ -15,54 +16,99 @@
 
 ## 导入方式
 
-1. 导入 工具类 
+1.导入 工具类
+
 ```js
 import { Auth } from 'nestfy';
-import { AppUtil, LogUtil } from 'nestfy';
+import { AppUtil, logger } from 'nestfy';
 ```
 
 ## 用法
 
 1. AppUtil
 
-  * 将nestfy.json文件放在工程的根目录，写法如下：
+ *将nestfy.json文件放在工程的根目录，写法如下：
 
 ```json
 {
   "app": {
     "port": 3000,
-    "setUpMsg": "Nestfy server started.",
+    "setUpMsg": "Nestfy server started",
+    "apiPrefix": {
+      "enable": true,
+      "prefix": "/api/rest"
+    }
+  },
+  "logging": {
+    "enable": true,
+    "configuration": {
+      "appenders": {
+        "txt": { "type": "dateFile", "filename": "./logs/nestfy.log" },
+        "out": { "type": "stdout" }
+      },
+      "categories": {
+        "default": { "appenders": ["out", "txt"], "level": "info" }
+      }
+    }
+  },
+  "request": {
+    "traceRequestDuration": true,
     "cors": {
       "enable": true
     },
     "bodyParser": {
       "enable": true,
-      "limit": "10mb"
+      "limit": "5mb"
     },
     "validation": {
-      "enable": true
-    },
-    "logRequest": {
-      "enable": true
+      "enable": true,
+      "skipMissingProperties": true
     },
     "auth": {
-      "enable": true,
+      "enable": false,
       "headerTag": "x-access-token",
       "secret": "i6r5LgMJdoa5trlM",
       "expiresIn": "24h",
       "decodedTag": "user"
     }
   },
+  "response": {
+    "success": {
+      "defaultMessage": "执行成功!",
+      "successField": {
+        "enable": true,
+        "name": "success"
+      },
+      "statusField": {
+        "enable": true,
+        "name": "status"
+      }
+    },
+    "failure": {
+      "defaultMessage": "执行失败!",
+      "successField": {
+        "enable": true,
+        "name": "success"
+      },
+      "statusField": {
+        "enable": true,
+        "name": "status"
+      }
+    }
+  },
   "swagger": {
     "enable": true,
     "title": "nestfy-starter",
     "description": "The photo API description",
+    "schemas": "http",
     "version": "1.0",
+    "email": "qinyang_1980@qq.com",
     "path": "/doc"
   }
 }
 ```
-  * 然后在程序中导入 AppUtil 类，如下使用方式：
+
+  *然后在程序中导入 AppUtil 类，如下使用方式：
 
 ```js
 import { AppUtil } from 'nestfy';
@@ -70,11 +116,10 @@ import { ApplicationModule } from './modules/app.module';
 
 AppUtil.bootstrap(ApplicationModule);
 ```
-<br>
 
-2. Auth
+2.Auth
 
-  * 放在函数前面，用于禁止该路由的token验证
+  *放在函数前面，用于禁止该路由的token验证
 
 ```js
   @Auth(false)
