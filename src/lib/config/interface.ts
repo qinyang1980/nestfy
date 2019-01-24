@@ -1,7 +1,10 @@
+import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
+import { ValidatorOptions } from '@nestjs/common/interfaces/external/validator-options.interface';
 import { Configuration } from 'log4js';
 
 export interface ICors {
   enable: boolean;
+  configuration: CorsOptions;
 }
 
 export interface IBodyParser {
@@ -11,7 +14,7 @@ export interface IBodyParser {
 
 export interface IValidation {
   enable: boolean;
-  skipMissingProperties: boolean;
+  configuration: ValidatorOptions;
 }
 
 export interface ILog {

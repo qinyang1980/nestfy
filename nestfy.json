@@ -2,7 +2,7 @@
   // 应用相关配置项
   "app": {
     // 服务的端口号
-    "port": 3000,
+    "port": 12000,
 
     // 服务启动成功后，打印此日志
     "setUpMsg": "Nestfy server started",
@@ -37,7 +37,12 @@
     // 跨域配置
     "cors": {
       // 是否启用跨域
-      "enable": true
+      "enable": true,
+
+      // 具体配置请参考Cors官方网站(https://github.com/expressjs/cors)
+      "configuration": {
+        "origin": "http://example.com"
+      }
     },
 
     // bodyParser第三方中间件配置
@@ -48,11 +53,17 @@
       // Body的容量限制(mb)
       "limit": "5mb"
     },
+
     // DTO类自动校验相关配置
     "validation": {
       "enable": true, // 是否启用自动校验功能
-      "skipMissingProperties": true // 不存在的属性，是否跳过校验
+
+      // 属性校验的配置项
+      "configuration": {
+        "skipMissingProperties": true
+      }
     },
+
     // 接口权限控制相关配置
     "auth": {
       "enable": false, // 是否启用，启用后请求如果不携带token信息，将无法调用所有接口

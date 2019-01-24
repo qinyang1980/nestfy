@@ -22,7 +22,7 @@ export class AppUtil {
 
     // 跨域支持
     if (config.request.cors.enable) {
-      app.enableCors();
+      app.enableCors(config.request.cors.configuration);
     }
 
     // 是否打印请求
@@ -38,7 +38,7 @@ export class AppUtil {
     // 校验Request
     if (config.request.validation.enable) {
       app.useGlobalPipes(
-        new ValidationPipe({ skipMissingProperties: config.request.validation.skipMissingProperties }),
+        new ValidationPipe(config.request.validation.configuration),
       );
     }
 
