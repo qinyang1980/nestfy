@@ -29,7 +29,7 @@ import { AppUtil, logger } from 'nestfy';
 
  *将nestfy.json文件放在工程的根目录，写法如下：
 
-```json
+```java
 {
   // 应用相关配置项
   "app": {
