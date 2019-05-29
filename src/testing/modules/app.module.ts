@@ -15,9 +15,9 @@ import { PhotoModule } from './photo/photo.module';
       password: 'root',
       database: 'test',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true
+      synchronize: true,
     }),
-    PhotoModule
-  ]
+    PhotoModule,
+  ],
 })
 export class ApplicationModule {}

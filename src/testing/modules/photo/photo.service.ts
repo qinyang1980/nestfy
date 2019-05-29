@@ -8,7 +8,7 @@ import { Photo } from './photo.entity';
 export class PhotoService {
   constructor(
     @InjectRepository(Photo)
-    private readonly _photoRepository: Repository<Photo>
+    private readonly _photoRepository: Repository<Photo>,
   ) {}
 
   /**

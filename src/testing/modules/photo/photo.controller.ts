@@ -52,7 +52,7 @@ export class PhotoController {
   public async transfer(): Promise<any> {
     const options = {
       uri: 'https://jsonplaceholder.typicode.com/todos',
-      json: true
+      json: true,
     };
 
     const ret = await rp(options);

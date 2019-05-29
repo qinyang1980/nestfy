@@ -52,7 +52,7 @@ function failedJson(path: string, error: any): ICustomResponse {
     timestamp: new Date(),
     message: error.message || config.response.failure.defaultMessage,
     errors: error.errors || undefined,
-    path: path || undefined
+    path: path || undefined,
   };
 
   return { ...result, ...fixedFields, ...error };
@@ -68,7 +68,7 @@ function successJson(message: string, data: object | object[]): any {
   }
   const fixedFields = {
     message: message || null,
-    data: data || {}
+    data: data || {},
   };
 
   return { ...result, ...fixedFields };
@@ -86,7 +86,7 @@ function formatFindAndCount(content: any): any {
 }
 
 export class ResponseUtil {
-  public static ok(data: object | object[]): ICustomResponse {
+  public static ok(data: any): ICustomResponse {
     return successJson(config.response.success.defaultMessage, formatFindAndCount(data));
   }
 

@@ -13,6 +13,6 @@ export const configProduction = {
     password: 'root',
     database: 'test',
     entities: [__dirname + '/**/*.entity{.ts,.js}'],
-    synchronize: true
-  }
+    synchronize: true,
+  },
 };

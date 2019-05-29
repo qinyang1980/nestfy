@@ -67,7 +67,7 @@ const errors = {
   '-2002': '订单失效',
 
   // -5000
-  '-5000': '未知错误'
+  '-5000': '未知错误',
 };
 
 export const error = {
@@ -80,5 +80,5 @@ export const error = {
     const ise = new InternalServerErrorException(msg);
     (ise as any).errno = code;
     return ise;
-  }
+  },
 };

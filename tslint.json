@@ -74,13 +74,7 @@
     "max-line-length": [true, 120],
     "no-trailing-whitespace": true,
     "interface-name": [true, "always-prefix"],
-    "trailing-comma": [
-      true,
-      {
-        "multiline": "never",
-        "singleline": "never"
-      }
-    ],
+    "trailing-comma": [true, { "multiline": "always", "singleline": "never" }],
     "align": [true, "arguments", "parameters"],
     "class-name": true,
     "comment-format": [true, "check-space"],

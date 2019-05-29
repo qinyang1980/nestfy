@@ -23,7 +23,7 @@ export class ValidationPipe implements PipeTransform<any> {
     }
 
     const err = new BadRequestException(
-      `You have an error in your request's body. Check 'errors' field for more details!`
+      `You have an error in your request's body. Check 'errors' field for more details!`,
     );
     (err as any).errors = errors;
 
