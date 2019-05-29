@@ -4,7 +4,7 @@
 
 > 本框架旨在帮助开发人员快速搭建一套成型的企业后台 REST 应用。<br>
 > 使用本框架之前需要先了解 [Nestjs 框架](https://docs.nestjs.com)
-
+> 如何使用本框架请参考 [Nestfy的使用例子工程](https://github.com/qinyang1980/nestfy-starter)
 ---
 
 [TOC]
