@@ -1,6 +1,6 @@
 {
   "name": "nestfy",
-  "version": "0.7.8",
+  "version": "0.7.9",
   "description": "基于Nestjs的后台框架",
   "author": "andy.qin <qinyang_1980@qq.com>",
   "repository": {
